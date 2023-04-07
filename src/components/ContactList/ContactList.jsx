@@ -26,7 +26,7 @@ export default function ContactList() {
 
   if (error === "rejected") return (<div>Not found contacts</div>)
    
-  if (isLoading)   return (<div><Loader/></div>)
+  if (isLoading)            return (<div><Loader/></div>)
   
   if(contacts.length === 0) return (<div>Add your contacts</div>)
 
