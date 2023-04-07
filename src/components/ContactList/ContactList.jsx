@@ -28,6 +28,7 @@ export default function ContactList() {
    
   if (isLoading)   return (<div><Loader/></div>)
   
+  if(contacts.length === 0) return (<div>Add your contacts</div>)
 
   if (!isLoading) {
     return (
@@ -42,7 +43,7 @@ export default function ContactList() {
           <span>{contact.phone}</span>
                 <button
           className={css.phonebook__deleteBtn}        
-          onClick={() => dispatch(deleteContact(contact.id))}>Delete</button>      
+          onClick={() => dispatch((deleteContact(contact.id)))}>Delete</button>      
             </li>
           ))}
           </ul>
