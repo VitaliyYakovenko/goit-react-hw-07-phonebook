@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { add } from "redux/slice";
+import { addContact } from "redux/slice";
 import { nanoid } from 'nanoid'
 import css from "./ContactForm.module.css"
 
 export default function ContactForm() {
-    const contacts = useSelector(state => state.contacts.contacts);
+    const contacts = useSelector(state => state.contacts.items);
     const dispatch = useDispatch();
     const [name, setName] = useState("");
-    const [number, setNumber] = useState("");
+    const [phone, setNumber] = useState("");
 
     const InputIdName = nanoid();
     const InputIdPhone = nanoid();
@@ -42,10 +42,10 @@ export default function ContactForm() {
         const user = {
         id: 'id ' + nanoid(),
         name,
-        number,
+        phone,
         }
         
-        dispatch(add(user))
+        dispatch(addContact(user))
 
         reset();
     };
@@ -81,7 +81,7 @@ export default function ContactForm() {
             className={css.phonebook__input}
             onChange={onInputChange}
             type="tel"
-            value={number}
+            value={phone}
             name="number"
             id={InputIdPhone}        
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
