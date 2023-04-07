@@ -12,7 +12,6 @@ export default function ContactList() {
   const error = useSelector(state => state.contacts.error);
   const isLoading = useSelector(state => state.contacts.isLoading);
 
-  console.log(error);
   const dispatch = useDispatch();
 
   useEffect(() => {
