@@ -26,11 +26,13 @@ export const addContact = createAsyncThunk(
             { method: "POST",
             headers: { "Content-Type": 'application/json'},
             body: JSON.stringify(user)
-            })
+                })
+            
+            if (!response.ok) throw new Error("Can't add contact")
+        
             const data = await response.json();
             dispatch(add(data));
 
-            if (!response.ok) throw new Error("Can't add contact")
             
          } catch (error) {
              return rejectWithValue(error.message);
