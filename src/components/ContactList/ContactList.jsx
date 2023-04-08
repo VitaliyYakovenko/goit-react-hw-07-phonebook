@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/slice';
+import { fetchContacts } from 'redux/API/getContacts';
 import { useEffect } from 'react';
-import { deleteContact } from 'redux/slice';
+import { deleteContact } from 'redux/API/deleteContact';
 import Loader from 'components/Loader/Loader';
 import css from "./ContactList.module.css";
 
@@ -17,18 +17,23 @@ export default function ContactList() {
   useEffect(() => {
       dispatch(fetchContacts())
   },[dispatch])
- 
-
 
   const normalizedName =  filter.toLowerCase();
   const visibleContacts = contacts.filter(contact =>
   contact.name.toLowerCase().includes(normalizedName));
 
-  if (error === "rejected") return (<div>Not found contacts</div>)
+
+  if (error === "rejected") {
+    return (<div>Not found contacts</div>)
+  } 
    
-  if (isLoading)            return (<div><Loader/></div>)
+  if (isLoading) {
+    return (<div><Loader/></div>)
+  }        
   
-  if(contacts.length === 0) return (<div>Add your contacts</div>)
+  if (contacts.length === 0) {
+    return (<div>Add your contacts</div>)
+  }
 
   if (!isLoading) {
     return (

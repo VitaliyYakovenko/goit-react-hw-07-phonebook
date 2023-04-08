@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid'
 import css from "./Filter.module.css"
 
 
-
 export default function Filter() {
     const InputIdFilter = nanoid();
     const filter = useSelector(state => state.filter);
@@ -13,8 +12,6 @@ export default function Filter() {
         dispatch(changeFilter(e.target.value));
     }
         
-    
-
     return (
         <div className={css.phonebook__filter}>
             <label
